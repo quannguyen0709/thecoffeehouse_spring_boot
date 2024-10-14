@@ -5,6 +5,7 @@ import com.example.thecoffeehouse.data.interfacerepository.user.UserDataReposito
 import com.example.thecoffeehouse.domain.common.exception.ConflictException;
 import com.example.thecoffeehouse.domain.user.UserInerface;
 import com.example.thecoffeehouse.domain.user.valueobject.UserId;
+import com.example.thecoffeehouse.domain.user.valueobject.rankmembership.LevelRankMembership;
 
 import java.sql.Date;
 import java.util.UUID;
@@ -31,7 +32,7 @@ public class UserService implements UserServiceInterface {
                 birthDate,
                 0,
                 urlAvatar,
-                rankMembershipDataInterface.getRankMembership(1)
+                rankMembershipDataInterface.getRankMembership(LevelRankMembership.getValue(LevelRankMembership.NEW))
         );
         userDataRepositoryInterface.save(userInerface);
     }

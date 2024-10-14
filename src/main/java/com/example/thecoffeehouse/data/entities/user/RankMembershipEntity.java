@@ -1,6 +1,7 @@
 package com.example.thecoffeehouse.data.entities.user;
 
 import jakarta.persistence.*;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.processing.Generated;
 import java.util.ArrayList;
@@ -9,20 +10,17 @@ import java.util.ArrayList;
 @Table(name = "rank_membership")
 public class RankMembershipEntity {
     @Id
+    @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
-    @Column
     private  String nameRank;
 
 
-    @Column
     private int startBeanPoint ;
 
-    @Column
     private int endBeanPoint ;
 
-    @Column
     private String includedRewardJsonString ;
 
     public int getId() {

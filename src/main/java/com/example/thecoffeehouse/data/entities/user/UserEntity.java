@@ -4,39 +4,31 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import org.jetbrains.annotations.NotNull;
 
 import java.sql.Date;
 
 @Entity
-@Table(name = "user")
+@Table(name = "user_account")
 public class UserEntity {
+    @NotNull
     @Id
-    @Column
     private String userId;
-    @Column
     private String firstName;
-    @Column
     private String lastName;
-    @Column
     private String email;
-    @Column
     private String password;
-    @Column
     private Date dateOfBirth;
-    @Column
     private String phoneNumber;
-    @Column
     private int pointBeanCurrent;
-    @Column
     private String urlAvatar;
-    @Column
     private String rankMembershipId;
 
-    public String getUserId() {
+    public @NotNull String getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(@NotNull String userId) {
         this.userId = userId;
     }
 
