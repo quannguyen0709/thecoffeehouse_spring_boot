@@ -7,21 +7,24 @@ import java.util.ArrayList;
 public class RankMembership extends ValueObject implements RankMembershipInterface {
     private String nameRank;
     private ArrayList<String> includedReward;
-    private int beanPoint;
-    private RankMembership(String nameRank, ArrayList<String> includedReward, int beanPoint) {
+    private int startBeanPoint;
+    private  int endBeanPoint;
+    public RankMembership() {}
+    private RankMembership(String nameRank, ArrayList<String> includedReward, int startBeanPoint, int endBeanPoint) {
         this.nameRank = nameRank;
         this.includedReward = includedReward;
-        this.beanPoint = beanPoint;
+        this.startBeanPoint = startBeanPoint;
+        this.endBeanPoint = endBeanPoint;
     }
 
 
     public static boolean equal(RankMembershipInterface rankMembership1, RankMembershipInterface rankMembership2) {
-        return  rankMembership1.getNameRank().equals(rankMembership2.getNameRank()) && rankMembership1.getBeanPoint() == rankMembership2.getBeanPoint();
+        return  rankMembership1.getNameRank().equals(rankMembership2.getNameRank()) ;
     }
 
     @Override
-    public RankMembershipInterface create(String nameRank, ArrayList<String> includedReward, int beanPoint) {
-        return  new RankMembership(nameRank, includedReward, beanPoint);
+    public RankMembershipInterface create(String nameRank, ArrayList<String> includedReward, int startBeanPoint, int endBeanPoint) {
+        return  new RankMembership(nameRank, includedReward, startBeanPoint, endBeanPoint);
     }
 
     public String getNameRank() {
@@ -40,12 +43,20 @@ public class RankMembership extends ValueObject implements RankMembershipInterfa
         this.includedReward = includedReward;
     }
 
-    public int getBeanPoint() {
-        return beanPoint;
+    public int getStartBeanPoint() {
+        return startBeanPoint;
     }
 
-    private void setBeanPoint(int beanPoint) {
-        this.beanPoint = beanPoint;
+    private void setStartBeanPoint(int startBeanPoint) {
+        this.startBeanPoint = startBeanPoint;
     }
 
+    @Override
+    public int getEndBeanPoint() {
+        return endBeanPoint;
+    }
+
+    public void setEndBeanPoint(int endBeanPoint) {
+        this.endBeanPoint = endBeanPoint;
+    }
 }

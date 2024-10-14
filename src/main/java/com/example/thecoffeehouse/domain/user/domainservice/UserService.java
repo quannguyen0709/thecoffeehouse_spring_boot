@@ -1,12 +1,10 @@
 package com.example.thecoffeehouse.domain.user.domainservice;
 
-import com.example.thecoffeehouse.data.mapper.user.RankMembershipDataRepositoryInterface;
-import com.example.thecoffeehouse.data.mapper.user.UserDataRepositoryInterface;
+import com.example.thecoffeehouse.data.interfacerepository.user.RankMembershipDataRepositoryInterface;
+import com.example.thecoffeehouse.data.interfacerepository.user.UserDataRepositoryInterface;
 import com.example.thecoffeehouse.domain.common.exception.ConflictException;
-import com.example.thecoffeehouse.domain.common.valueobject.Phone;
 import com.example.thecoffeehouse.domain.user.UserInerface;
 import com.example.thecoffeehouse.domain.user.valueobject.UserId;
-import com.example.thecoffeehouse.domain.user.valueobject.rankmembership.LevelRankMembership;
 
 import java.sql.Date;
 import java.util.UUID;
@@ -16,18 +14,24 @@ public class UserService implements UserServiceInterface {
     UserDataRepositoryInterface userDataRepositoryInterface;
     RankMembershipDataRepositoryInterface rankMembershipDataInterface;
 
+    public UserService(UserDataRepositoryInterface userDataRepositoryInterface, RankMembershipDataRepositoryInterface rankMembershipDataInterface) {
+        this.userDataRepositoryInterface = userDataRepositoryInterface;
+        this.rankMembershipDataInterface = rankMembershipDataInterface;
+    }
+
     @Override
     public void createUser( String firstName, String lastName, String email, String password, String phone, Date birthDate ,String urlAvatar) throws ConflictException {
+        userInerface = UserInerface.createInstace(createId());
         userInerface.create(
-                createId(),
                 firstName,
                 lastName,
                 email,
                 password,
-                new Phone(phone),
+                phone,
                 birthDate,
+                0,
                 urlAvatar,
-                rankMembershipDataInterface.getRankMembership(LevelRankMembership.NEW)
+                rankMembershipDataInterface.getRankMembership(1)
         );
         userDataRepositoryInterface.save(userInerface);
     }

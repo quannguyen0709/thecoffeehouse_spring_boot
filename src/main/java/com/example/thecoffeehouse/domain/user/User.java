@@ -1,6 +1,7 @@
 package com.example.thecoffeehouse.domain.user;
 
 import com.example.thecoffeehouse.domain.common.model.Aggregate;
+import com.example.thecoffeehouse.domain.common.model.ValueObject;
 import com.example.thecoffeehouse.domain.common.valueobject.Phone;
 import com.example.thecoffeehouse.domain.user.valueobject.UserId;
 import com.example.thecoffeehouse.domain.user.valueobject.rankmembership.RankMembership;
@@ -32,16 +33,17 @@ public class User extends Aggregate<UserId> implements UserInerface {
     }
 
     @Override
-    public void create(UserId userId, String firstName, String lastName, String email, String password, Phone phone,  Date birthDay, String urlAvatar, RankMembershipInterface rankMembershipInterface) {
-        User createUser = new User(userId);
+    public void create(String firstName, String lastName, String email, String password, String phone,  Date birthDay, int pointBeanCurrent,String urlAvatar, RankMembershipInterface rankMembershipInterface) {
+        UserInerface createUser = this;
         createUser.setFirstName(firstName);
         createUser.setLastName(lastName);
         createUser.setEmail(email);
         createUser.setPassword(password);
-        createUser.setPhone(phone);
+        createUser.setPhone(new Phone(phone));
         createUser.setUrlAvatar(urlAvatar);
         createUser.setBirthDate(birthDay);
         createUser.setPointBeanCurrent(0);
+        createUser.setPointBeanCurrent(pointBeanCurrent);
         createUser.setRankMembership(rankMembershipInterface);
     }
 
@@ -104,6 +106,11 @@ public class User extends Aggregate<UserId> implements UserInerface {
 
     public int getPointBeanCurrent() {
         return pointBeanCurrent;
+    }
+
+    @Override
+    public UserId getUserId() {
+        return  super.getId();
     }
 
     public void setPointBeanCurrent(int pointBeanCurrent) {

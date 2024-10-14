@@ -1,4 +1,4 @@
-package com.example.thecoffeehouse.data.mapper.user;
+package com.example.thecoffeehouse.data.interfacerepository.user;
 
 import com.example.thecoffeehouse.domain.common.exception.ConflictException;
 import com.example.thecoffeehouse.domain.user.UserInerface;
