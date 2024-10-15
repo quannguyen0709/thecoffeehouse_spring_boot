@@ -19,7 +19,7 @@ public interface UserInerface {
     public String getEmail();
     public String getPassword();
     public Date getBirthDate();
-    public Phone getPhone();
+    public String getPhone();
     public String getUrlAvatar();
     public RankMembershipInterface getRankMembership();
     public int getPointBeanCurrent();

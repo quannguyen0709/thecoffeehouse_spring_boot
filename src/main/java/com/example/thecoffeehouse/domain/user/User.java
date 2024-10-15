@@ -79,8 +79,8 @@ public class User extends Aggregate<UserId> implements UserInerface {
         this.birthDate = birthDate;
     }
 
-    public Phone getPhone() {
-        return phone;
+    public String getPhone() {
+        return phone.getPhoneNumber();
     }
 
     public void setPhone(Phone phone) {

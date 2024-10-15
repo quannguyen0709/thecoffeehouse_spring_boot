@@ -5,7 +5,10 @@ import com.example.thecoffeehouse.data.repository.user.RankMembershipRepository;
 import com.example.thecoffeehouse.domain.common.exception.ConflictException;
 import com.example.thecoffeehouse.domain.user.valueobject.rankmembership.RankMembershipInterface;
 import com.example.thecoffeehouse.mapper.user.RankMembershipMapper;
+import org.springframework.stereotype.Component;
 
+
+@Component
 public class RankMembershipDataRepository implements RankMembershipDataRepositoryInterface {
     private final RankMembershipRepository rankMembershipRepository;
 

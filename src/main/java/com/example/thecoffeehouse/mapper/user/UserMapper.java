@@ -4,7 +4,9 @@ import com.example.thecoffeehouse.data.entities.user.UserEntity;
 import com.example.thecoffeehouse.domain.user.UserInerface;
 import com.example.thecoffeehouse.domain.user.valueobject.UserId;
 import com.example.thecoffeehouse.domain.user.valueobject.rankmembership.RankMembershipInterface;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UserMapper {
     //public Dto toDto(UserInerface user) {}
     //public Dto toDto(UserEntity user) {}

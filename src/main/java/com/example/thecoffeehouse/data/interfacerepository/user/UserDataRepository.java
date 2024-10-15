@@ -5,19 +5,25 @@ import com.example.thecoffeehouse.data.repository.user.UserRepository;
 import com.example.thecoffeehouse.domain.common.exception.ConflictException;
 import com.example.thecoffeehouse.domain.user.UserInerface;
 import com.example.thecoffeehouse.mapper.user.UserMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+
+@Component
 public class UserDataRepository implements UserDataRepositoryInterface{
-    private final UserRepository userRepository;
+    @Autowired
+    private UserRepository userRepository;
 
-    public UserDataRepository(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    @Autowired
+    private UserMapper userMapper;
+    public UserDataRepository(){
     }
 
     @Override
     public void save(UserInerface user) throws ConflictException {
         try {
-            UserEntity entity = UserMapper.toUserEntity(user);
-            userRepository.save(entity);
+            UserEntity userEntity = UserMapper.toUserEntity(user);
+            userRepository.save(userEntity);
         }catch (Exception e){
            throw new ConflictException("Khong insert duoc User");
         }
@@ -26,8 +32,7 @@ public class UserDataRepository implements UserDataRepositoryInterface{
     @Override
     public boolean hasUserId(String id) {
         try {
-            userRepository.existsById(id);
-            return true;
+            return userRepository.existsById(id);
         }catch (Exception e){
             return false;
         }

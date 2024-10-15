@@ -6,19 +6,21 @@ import com.example.thecoffeehouse.domain.common.exception.ConflictException;
 import com.example.thecoffeehouse.domain.user.UserInerface;
 import com.example.thecoffeehouse.domain.user.valueobject.UserId;
 import com.example.thecoffeehouse.domain.user.valueobject.rankmembership.LevelRankMembership;
+import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.sql.Date;
 import java.util.UUID;
 
-public class UserService implements UserServiceInterface {
+@Component
+public class UserServiceDomain implements UserServiceDomainInterface {
     UserInerface userInerface;
+    @Autowired
     UserDataRepositoryInterface userDataRepositoryInterface;
+    @Autowired
     RankMembershipDataRepositoryInterface rankMembershipDataInterface;
 
-    public UserService(UserDataRepositoryInterface userDataRepositoryInterface, RankMembershipDataRepositoryInterface rankMembershipDataInterface) {
-        this.userDataRepositoryInterface = userDataRepositoryInterface;
-        this.rankMembershipDataInterface = rankMembershipDataInterface;
-    }
 
     @Override
     public void createUser( String firstName, String lastName, String email, String password, String phone, Date birthDate ,String urlAvatar) throws ConflictException {
