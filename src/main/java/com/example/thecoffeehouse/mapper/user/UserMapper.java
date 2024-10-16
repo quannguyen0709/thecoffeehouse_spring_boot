@@ -6,7 +6,7 @@ import com.example.thecoffeehouse.domain.user.valueobject.UserId;
 import com.example.thecoffeehouse.domain.user.valueobject.rankmembership.RankMembershipInterface;
 import org.springframework.stereotype.Component;
 
-@Component
+
 public class UserMapper {
     //public Dto toDto(UserInerface user) {}
     //public Dto toDto(UserEntity user) {}
@@ -35,6 +35,7 @@ public class UserMapper {
         userEntity.setDateOfBirth(userInerface.getBirthDate());
         userEntity.setPointBeanCurrent(userInerface.getPointBeanCurrent());
         userEntity.setUrlAvatar(userInerface.getUrlAvatar());
+        userEntity.setRankMembershipId(userInerface.getRankMembership().getNameRank());
         return userEntity;
     }
 }

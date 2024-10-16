@@ -7,21 +7,14 @@ public enum LevelRankMembership {
     GOLD,
     DIAMOND;
 
-    public static int getValue(LevelRankMembership levelRankMembership) {
-        int value = 0;
-          switch (levelRankMembership) {
-            case NEW:
-                value = 1;
-            case COPPPER:
-                value = 2;
-            case SILVER:
-                value = 3;
-            case GOLD:
-                value = 4;
-            case DIAMOND:
-                value = 5;
-        }
-        return value;
+    public static int getValue(String levelRankMembership) {
+        String a= LevelRankMembership.NEW.name();
+        if(levelRankMembership.equals(LevelRankMembership.NEW.toString())) {return 1;}
+        if(levelRankMembership.equals(LevelRankMembership.COPPPER.toString())) {return 2;}
+        if(levelRankMembership.equals(LevelRankMembership.SILVER.toString())) {return 3;}
+        if(levelRankMembership.equals(LevelRankMembership.GOLD.toString())) {return  4;}
+        if(levelRankMembership.equals(LevelRankMembership.DIAMOND.toString())) {return 5;}
+        return 0;
     }
 
 
@@ -29,15 +22,15 @@ public enum LevelRankMembership {
         LevelRankMembership levelRankMembership = null;
         switch (value) {
             case 1:
-                levelRankMembership = LevelRankMembership.NEW;
+                return LevelRankMembership.NEW;
             case 2:
-                levelRankMembership = LevelRankMembership.COPPPER;
+                return levelRankMembership = LevelRankMembership.COPPPER;
             case 3:
-                levelRankMembership = LevelRankMembership.SILVER;
+                return levelRankMembership = LevelRankMembership.SILVER;
             case 4:
-                levelRankMembership = LevelRankMembership.GOLD;
+                return levelRankMembership = LevelRankMembership.GOLD;
             case 5:
-                levelRankMembership = LevelRankMembership.DIAMOND;
+                return levelRankMembership = LevelRankMembership.DIAMOND;
         }
         return levelRankMembership;
     }

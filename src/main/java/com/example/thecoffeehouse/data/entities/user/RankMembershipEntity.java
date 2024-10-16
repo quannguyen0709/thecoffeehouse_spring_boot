@@ -11,7 +11,6 @@ import java.util.ArrayList;
 public class RankMembershipEntity {
     @Id
     @NotNull
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private  String nameRank;

@@ -5,12 +5,12 @@ import com.example.thecoffeehouse.domain.common.model.ValueObject;
 import java.util.ArrayList;
 
 public class RankMembership extends ValueObject implements RankMembershipInterface {
-    private LevelRankMembership nameRank;
+    private String nameRank;
     private ArrayList<String> includedReward;
     private int startBeanPoint;
     private  int endBeanPoint;
     public RankMembership() {}
-    private RankMembership(LevelRankMembership nameRank, ArrayList<String> includedReward, int startBeanPoint, int endBeanPoint) {
+    public RankMembership(String nameRank, int startBeanPoint, int endBeanPoint, ArrayList<String> includedReward) {
         this.nameRank = nameRank;
         this.includedReward = includedReward;
         this.startBeanPoint = startBeanPoint;
@@ -22,16 +22,11 @@ public class RankMembership extends ValueObject implements RankMembershipInterfa
         return  rankMembership1.getNameRank().equals(rankMembership2.getNameRank()) ;
     }
 
-    @Override
-    public RankMembershipInterface create(LevelRankMembership nameRank, ArrayList<String> includedReward, int startBeanPoint, int endBeanPoint) {
-        return  new RankMembership(nameRank, includedReward, startBeanPoint, endBeanPoint);
-    }
-
-    public LevelRankMembership getNameRank() {
+    public String getNameRank() {
         return nameRank;
     }
 
-    private void setNameRank(LevelRankMembership nameRank) {
+    private void setNameRank(String nameRank) {
         this.nameRank = nameRank;
     }
 

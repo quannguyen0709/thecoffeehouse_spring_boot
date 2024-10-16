@@ -9,12 +9,15 @@ import java.sql.Date;
 
 @RestController
 public class Helloword {
+
     @Autowired
     UserService userService;
+
     @GetMapping("/")
     public void index() {
-       userService.createRankInfor();
-       // userService.create();
-       // userService.addUser("Nguyễn ", "Quân ","quangquan21102002@gmail.com", "quan123", "0769147688",new Date(2024,10,10), "");
+        userService.addRankMembership();
+        //userService.createRankInfor();
+       //userService.create();
+        userService.addUser("Nguyễn ", "Quân ","quangquan21102002@gmail.com", "quan123", "0769147688",new Date(2024,10,10), "");
     }
 }

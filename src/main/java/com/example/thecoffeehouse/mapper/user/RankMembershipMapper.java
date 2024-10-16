@@ -10,8 +10,10 @@ import com.fasterxml.jackson.databind.json.JsonMapper;
 import netscape.javascript.JSObject;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+
 
 public class RankMembershipMapper {
     static final private ObjectMapper objectMapper  = new JsonMapper();
@@ -19,13 +21,12 @@ public class RankMembershipMapper {
         RankMembershipInterface rankMembership;
         try {
             ArrayList<String> includedReward = objectMapper.readValue(entity.getIncludedRewardJsonString(), ArrayList.class);
-             rankMembership = new RankMembership();
-            rankMembership.create(
-                    LevelRankMembership.getLevelRankMembership(entity.getId()),
-                    includedReward,
-                    entity.getStartBeanPoint(),
-                    entity.getEndBeanPoint()
-            );
+             rankMembership = new RankMembership(
+                     LevelRankMembership.getLevelRankMembership(entity.getId()).name(),
+                     entity.getStartBeanPoint(),
+                     entity.getEndBeanPoint(),
+                     includedReward
+             );
             return rankMembership;
         } catch (JsonProcessingException e) {
             return null;

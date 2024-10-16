@@ -3,7 +3,7 @@
     "nameRank": "NEW",
     "startBeanPoint" : 0,
     "endBeanPoint": 49,
-    "includedRewardJsonString": [
+    "includedReward": [
 
     ]
   },
@@ -11,7 +11,7 @@
     "nameRank": "COPPPER",
     "startBeanPoint" : 50,
     "endBeanPoint": 119,
-    "includedRewardJsonString": [
+    "includedReward": [
       "Tặng 1 phần bánh sinh nhật",
       "Miễn phí một phần snack cho đơn hàng trên 100,000đ ",
       "Đặc quyền đổi ưu đãi bằng điểm BEAN tích lũy"
@@ -21,7 +21,7 @@
     "nameRank": "SILVER",
     "startBeanPoint" : 120,
     "endBeanPoint": 249,
-    "includedRewardJsonString": [
+    "includedReward": [
       "Tặng 1 phần bánh sinh nhật",
       "Ưu đãi Mua 2 tặng 1 ",
       "Đặc quyền đổi ưu đãi bằng điểm BEAN tích lũy"
@@ -31,7 +31,7 @@
     "nameRank": "GOLD",
     "startBeanPoint" : 250,
     "endBeanPoint": 359,
-    "includedRewardJsonString": [
+    "includedReward": [
       "Tặng 1 phần bánh sinh nhật",
       "Miễn phí một phần nứơc Cà phê‌ trà ",
       "Đặc quyền đổi ưu đãi bằng điểm BEAN tích lũy"
@@ -41,7 +41,7 @@
     "nameRank": "DIAMOND",
     "startBeanPoint" : 360,
     "endBeanPoint": 400,
-    "includedRewardJsonString": [
+    "includedReward": [
       "Được nhân 1.5 BEAN tích lũy",
       " Tặng 1 phần bánh sinh nhật",
       " Nhận riêng ưu đãi từ The coffee house và đối tác khác ",
