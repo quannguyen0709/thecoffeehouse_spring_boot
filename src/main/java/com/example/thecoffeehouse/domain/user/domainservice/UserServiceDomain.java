@@ -24,19 +24,18 @@ public class UserServiceDomain implements UserServiceDomainInterface {
     RankMembershipDataRepositoryInterface rankMembershipDataInterface;
 
 
-    private static UserServiceDomain instance = new UserServiceDomain();
-    private    UserServiceDomain(){}
+    public UserServiceDomain(UserDataRepositoryInterface repositoryInterface, RankMembershipDataRepositoryInterface rankMembershipDataRepositoryInterface) {
+        this.userDataRepositoryInterface = repositoryInterface;
+        this.rankMembershipDataInterface = rankMembershipDataRepositoryInterface;
 
-    public static UserServiceDomain getInstance(){return  instance;}
-
-    public void setField(UserDataRepositoryInterface userDataRepositoryInterface, RankMembershipDataRepositoryInterface rankMembershipDataInterface) {
-        instance.userDataRepositoryInterface = userDataRepositoryInterface;
-        instance.rankMembershipDataInterface = rankMembershipDataInterface;
     }
+
+
 
 
     @Override
     public void createUser( String firstName, String lastName, String email, String password, String phone, Date birthDate ,String urlAvatar) throws ConflictException {
+        userDataRepositoryInterface.deleteAllUsers();
         userInerface = UserInerface.createInstace(createId());
         userInerface.create(
                 firstName,
@@ -47,7 +46,7 @@ public class UserServiceDomain implements UserServiceDomainInterface {
                 birthDate,
                 0,
                 urlAvatar,
-                rankMembershipDataInterface.getRankMembership(LevelRankMembership.getValue(LevelRankMembership.DIAMOND.name()))
+                rankMembershipDataInterface.getRankMembership(LevelRankMembership.getValue(LevelRankMembership.SILVER.name()))
         );
         userDataRepositoryInterface.save(userInerface);
     }
@@ -69,13 +68,13 @@ public class UserServiceDomain implements UserServiceDomainInterface {
         ObjectMapper mapper = new ObjectMapper();
         mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
 
-        String jsonStr = ReadFileResourceInterface.getInstance().getFileUseResourceLoader("/rank_membership.txt");
+        String jsonStr = ReadFileResourceInterface.getInstance().getFileUseResourceLoader("/rank_membership.json");
         RankMembership[] readValue = {};
         try {
-            instance.rankMembershipDataInterface.removeAllRankMembership();
+            this.rankMembershipDataInterface.removeAllRankMembership();
             readValue = mapper.readValue(jsonStr, RankMembership[].class);
 
-            instance.rankMembershipDataInterface.addListRankMembership(Arrays.asList(readValue));
+            this.rankMembershipDataInterface.addListRankMembership(Arrays.asList(readValue));
             System.out.println("Users Saved!");
         } catch (Exception e) {
 

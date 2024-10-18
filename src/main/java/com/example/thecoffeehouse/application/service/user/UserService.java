@@ -40,11 +40,11 @@ public class UserService {
     @Autowired
     private RankMembershipDataRepositoryInterface rankMembershipDataRepository;
 
-    private UserServiceDomainInterface userServiceDomain = UserServiceDomainInterface.getInstance();
+    @Autowired
+    private UserServiceDomainInterface userServiceDomain ;
 
 
     public void addUser(String firstName, String lastName, String email, String password, String phone, Date birthDate, String urlAvatar) {
-        userServiceDomain.setField(userDataRepository,rankMembershipDataRepository);
         try {
 
             userServiceDomain.createUser(firstName, lastName, email, password, phone, birthDate, urlAvatar);
@@ -59,7 +59,7 @@ public class UserService {
         //ObjectMapper mapper = new ObjectMapper();
         //mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
 //
-        //String jsonStr = ReadFileResourceInterface.getInstance().getFileUseResourceLoader("/rank_membership.txt");
+        //String jsonStr = ReadFileResourceInterface.getInstance().getFileUseResourceLoader("/rank_membership.json");
         //RankMembership[] readValue = {};
         //try {
         //    rankMembershipDataRepository.removeAllRankMembership();

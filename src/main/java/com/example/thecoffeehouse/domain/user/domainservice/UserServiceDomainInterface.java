@@ -9,12 +9,6 @@ import java.sql.Date;
 
 public interface UserServiceDomainInterface {
 
-    public static UserServiceDomainInterface  getInstance(){
-        return  UserServiceDomain.getInstance();
-    }
-
-    public void setField(UserDataRepositoryInterface userDataRepository, RankMembershipDataRepositoryInterface rankMembershipDataRepository);
-
     public void createUser(
             String firstName,
             String lastName,

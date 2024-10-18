@@ -29,4 +29,9 @@ public class UserDataRepository implements UserDataRepositoryInterface {
     public boolean hasUserId(String id) {
         return userRepository.findById(id).isPresent();
     }
+
+    @Override
+    public void deleteAllUsers() {
+        userRepository.deleteAll();
+    }
 }
